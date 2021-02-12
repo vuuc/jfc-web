@@ -1,0 +1,21 @@
+{
+    "name": "jfc-web",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build:css": "npx tailwindcss build ./static/src/styles.css -o ./static/src/css/master.css"
+    },
+    "author": "Jesper Fredrik Christ",
+    "license": "MIT",
+    "dependencies": {
+        "postcss": "^8.1.10",
+        "tailwindcss": "^2.0.1"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.0.4"
+    },
+    "peerDependencies": {
+        "postcss": "^8.0.0"
+    }
+}
