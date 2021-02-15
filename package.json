@@ -4,18 +4,20 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build:css": "npx tailwindcss build ./static/src/styles.css -o ./static/src/css/master.css"
+        "build:css": "postcss ./static/src/styles.css -o ./static/src/css/master.css"
     },
     "author": "Jesper Fredrik Christ",
     "license": "MIT",
     "dependencies": {
-        "postcss": "^8.1.10",
-        "tailwindcss": "^2.0.1"
-    },
-    "devDependencies": {
-        "autoprefixer": "^10.0.4"
+        "autoprefixer": "^10.2.4",
+        "postcss": "^8.2.6",
+        "postcss-cli": "^8.3.1",
+        "tailwindcss": "^2.0.3"
     },
     "peerDependencies": {
         "postcss": "^8.0.0"
+    },
+    "devDependencies": {
+        "postcss-purgecss": "^2.0.3"
     }
 }
