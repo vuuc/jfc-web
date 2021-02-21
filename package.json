@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "node index.js",
+        "start": "node app.js",
         "build:css": "postcss ./static/src/styles.css -o ./static/src/css/master.css"
     },
     "author": "Jesper Fredrik Christ",
