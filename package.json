@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "start": "node app.js",
-        "build:css": "postcss ./static/src/styles.css -o ./static/src/css/master.css"
+        "build:css": "postcss ./static/src/styles.css -o ./static/src/css/master.css",
+        "prod:css": "NODE_ENV=production postcss ./static/src/styles.css -o ./static/src/css/master.css",
     },
     "author": "Jesper Fredrik Christ",
     "license": "MIT",
