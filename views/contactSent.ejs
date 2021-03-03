@@ -1,0 +1,18 @@
+<%- include(“partials/header“) %>
+
+<% if (error.status === 200){ %>
+    <div class="bg-green-400">
+        <h1 class="text-2xl font-bold container"> Deine Nachricht wurde erfolgreich verschickt!</h1>    
+        <p class="">
+            Ich melde mich spätestens innerhalb von 5 Werktagen auf eingehende Nachrichten, wenn ich nicht erreichbar bin, dann bekommst du eine automatisierte Antwort, die dir mitteilt, wann ich wieder erreichbar bin.
+        </p>
+    </div>
+<% } if (error.status === 4**) { %>
+    <div class="bg-red-400">
+        <h1 class="text-2xl font-bold container"> Deine Nachricht konnte leider nicht zugestellt werden, bitte kontrolliere deine Eingabe!</h1>    
+        <p class="">
+                <%= error.message %>
+        </p>
+    </div>
+<% } %>
+<%- include(“partials/footer“) %>
