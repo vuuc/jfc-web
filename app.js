@@ -2,6 +2,27 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb+srv://admin-jesper:test123@cluster0.ggxae.mongodb.net/jfcwebDB", { useNewUrlParser: true, useUnifiedTopology: true  })
+const db = mongoose.connection;
+
+const messageSchema = { 
+	header: String,
+	email: {  
+		type: String,
+		required: true
+	},
+	content: String
+}
+
+const Message = mongoose.model("Message", messageSchema)
+
+const testMessage = new Message ({  
+	header: "Moin Meister",
+	email: "jesper@christ.de",
+	content: "Moininger Meister, wir wollen dich haben du süße Schnecke!"
+})
 
 // setting up express
 const app = express();
@@ -12,9 +33,26 @@ app.use(express.static("static"));
 app.set("view enginge", "ejs");
 
 // handling the GET request
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
+
+app.get("/inbox", (req, res) => {  
+	Message.find({}, function(err, foundMessages){  
+		if (foundMessages === 0) {
+			testMessage.save();
+			res.redirect("/inbox");
+		} else {  
+			res.render("inbox", { messages: foundMessages })
+		}
+	})
+})
+
+app.get("/inbox/:mail", (req, res) => {  
+	Message.findOne({ _id: req.params._id }, function(err, foundMessage){  
+		res.render("mailViewer", { mail: foundMessage });
+	})
+})
 
 // handling the post requests
 app.post("/", (req, res) => {
