@@ -43,7 +43,7 @@ app.get("/inbox", (req, res) => {
 			testMessage.save();
 			res.redirect("/inbox");
 		} else {  
-			res.render("inbox", { messages: foundMessages })
+			res.render("inbox", { messages: foundMessages });
 		}
 	})
 })
