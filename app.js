@@ -34,16 +34,20 @@ app.set("view enginge", "ejs");
 
 // handling the GET request
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + "/index.html");
+    res.render("main");
 });
 
 app.get("/inbox", (req, res) => {  
 	Message.find({}, function(err, foundMessages){  
-		if (foundMessages === 0) {
-			testMessage.save();
-			res.redirect("/inbox");
-		} else {  
-			res.render("inbox", { messages: foundMessages });
+		if(!err){
+			if (foundMessages === 0) {
+				testMessage.save();
+				res.redirect("/inbox");
+			} else {  
+				res.render("inbox", { messages: foundMessages });
+			}
+		} else {
+			res.send(err);
 		}
 	})
 })
@@ -56,7 +60,8 @@ app.get("/inbox/:mail", (req, res) => {
 
 // handling the post requests
 app.post("/", (req, res) => {
-    const error = err // TODO set up the error handling to be used in the ejs view to render the correct color and message for better user feedback!
+    const error = err;
+	// TODO set up the error handling to be used in the ejs view to render the correct color and message for better user feedback!
     res.render("main", { status: error });
 });
 
